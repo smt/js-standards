@@ -329,38 +329,9 @@ by a `var` keyword.
     // { a: "alpha" }
 
 
-#### 2.C. Exceptions, Slight Deviations
+#### 2.C. Consistency Always Wins (The Golden Rule)
 
-###### 2.C.1.1 Functions with callbacks
-
-    foo(function() {
-      // Note there is no extra space between the first paren
-      // of the executing function call and the word "function"
-    });
-
-    // Function accepting an array, no space
-    foo([ "alpha", "beta" ]);
-
-
-###### 2.C.1.2 Function accepting an object, no space
-
-    foo({
-      a: "alpha",
-      b: "beta"
-    });
-
-    // Single argument string literal, no space
-    foo("bar");
-
-    // Inner grouping parens, no space
-    if ( !("foo" in obj) ) {
-
-    }
-
-
-#### 2.D. Consistency Always Wins (The Golden Rule)
-
-In sections 2.A-2.C, the whitespace rules are set forth as a recommendation with
+In sections 2.A and 2.B, the whitespace rules are set forth as a recommendation with
 a simpler, higher purpose: consistency.
 
 It's important to note that formatting preferences, such as "inner whitespace"
@@ -368,7 +339,7 @@ should be considered optional, but only one style should exist across the entire
 source of your project.
 
 
-###### 2.D.1.1
+###### 2.C.1.1
 
     if (condition) {
       // statements
@@ -389,14 +360,14 @@ source of your project.
     }
 
 
-#### 2.E. Quotes
+#### 2.D. Quotes
 
 Whether you prefer single or double shouldn't matter, there is no difference in
 how JavaScript parses them. What **ABSOLUTELY MUST** be enforced is consistency.
 **Never mix quotes in the same project. Pick one style and stick with it.**
 
 
-#### 2.F. End of Lines and Empty Lines
+#### 2.E. End of Lines and Empty Lines
 
 Whitespace can ruin diffs and make changesets impossible to read. Consider
 incorporating a pre-commit hook that removes end-of-line whitespace and blanks
