@@ -159,6 +159,17 @@ maintainability.
 encourages readability.
 
 
+###### 2.A.1
+
+When defining a functional or block statement, observe the following
+conventions:
+
+- One space between keyword and opening parenthesis
+- No inner spacing of parentheses or braces
+- One space between parameters
+- One space between the closing parenthesis and the opening brace of the definition block
+
+
 ###### 2.A.1.1 Examples of really cramped syntax
 
     if(condition) doSomething();
@@ -170,15 +181,15 @@ encourages readability.
 
 ###### 2.A.1.2 Use whitespace to promote readability
 
-    if ( condition ) {
+    if (condition) {
         // statements
     }
 
-    while ( condition ) {
+    while (condition) {
         // statements
     }
 
-    for ( var i = 0; i < 100; i++ ) {
+    for (var i = 0; i < 100; i++) {
         // statements
     }
 
@@ -187,7 +198,7 @@ encourages readability.
     var i;
     var length = 100;
 
-    for ( i = 0; i < length; i++ ) {
+    for (i = 0; i < length; i++) {
         // statements
     }
 
@@ -196,24 +207,33 @@ Or...
     var i = 0;
     var length = 100;
 
-    for ( ; i < length; i++ ) {
+    for (; i < length; i++) {
         // statements
     }
 
     var prop;
 
-    for ( prop in object ) {
+    for (prop in object) {
         // statements
     }
 
-    if ( true ) {
+    if (true) {
         // statements
     } else {
         // statements
     }
 
 
-#### 2.B. Assignments, Declarations, Functions ( Named, Expression, Constructor )
+###### 2.A.1.2 Arrays and Objects
+
+Add inner spaces to single-line array and object definitions for readability.
+
+    var ary = [ 1, 2, 3, 4, 5 ];
+
+    var obj = { foo: 1, bar: 2, qux: 3 };
+
+
+#### 2.B. Assignments, Declarations, Functions (Named, Expression, Constructor)
 
 ###### 2.B.1.1 Variables
 
@@ -255,7 +275,7 @@ For more details on this, see <http://benalman.com/news/2012/05/multiple-var-sta
 ###### 2.B.1.3 `var` statements should always be in the beginning of their respective scope (function). Same goes for const and let from ECMAScript 6.
 
     // Bad
-    function foo() {
+    function foo () {
         // some statements here
 
         var bar = "";
@@ -263,7 +283,7 @@ For more details on this, see <http://benalman.com/news/2012/05/multiple-var-sta
     }
 
     // Good
-    function foo() {
+    function foo () {
         var bar = "";
         var qux;
 
@@ -273,36 +293,36 @@ For more details on this, see <http://benalman.com/news/2012/05/multiple-var-sta
 
 ###### 2.B.2.1 Named Function Declaration
 
-    function foo( arg1, argN ) {
+    function foo (arg1, argN) {
 
     }
 
     // Usage
-    foo( arg1, argN );
+    foo(arg1, argN);
 
 
 ###### 2.B.2.2 Named Function Declaration
 
-    function square( number ) {
+    function square (number) {
         return number * number;
     }
 
     // Usage
-    square( 10 );
+    square(10);
 
     // Really contrived continuation passing style
-    function square( number, callback ) {
-        callback( number * number );
+    function square (number, callback) {
+        callback(number * number);
     }
 
-    square( 10, function( square ) {
+    square (10, function (square) {
         // callback statements
     });
 
 
 ###### 2.B.2.3 Function Expression
 
-    var square = function( number ) {
+    var square = function (number) {
         // Return something valuable and relevant
         return number * number;
     };
@@ -310,18 +330,18 @@ For more details on this, see <http://benalman.com/news/2012/05/multiple-var-sta
     // Function Expression with Identifier
     // This preferred form has the added value of being
     // able to call itself and have an identity in stack traces:
-    var factorial = function factorial( number ) {
-        if ( number < 2 ) {
+    var factorial = function factorial (number) {
+        if (number < 2) {
             return 1;
         }
 
-        return number * factorial( number-1 );
+        return number * factorial(number-1);
     };
 
 
 ###### 2.B.2.4 Constructor Declaration
 
-    function FooBar( options ) {
+    function FooBar (options) {
         this.options = options;
     }
 
@@ -336,7 +356,7 @@ For more details on this, see <http://benalman.com/news/2012/05/multiple-var-sta
 
 ###### 2.C.1.1 Functions with callbacks
 
-    foo(function() {
+    foo (function () {
         // Note there is no extra space between the first paren
         // of the executing function call and the word "function"
     });
@@ -356,7 +376,7 @@ For more details on this, see <http://benalman.com/news/2012/05/multiple-var-sta
     foo("bar");
 
     // Inner grouping parens, no space
-    if ( !("foo" in obj) ) {
+    if (!("foo" in obj)) {
 
     }
 
@@ -431,7 +451,7 @@ configured to remove a file's trailing whitespace on save.
 
     Array:
 
-        Array.isArray( arrayLikeObject )
+        Array.isArray(arrayLikeObject)
         (wherever possible)
 
     Node:
@@ -459,7 +479,7 @@ configured to remove a file's trailing whitespace on save.
       Properties:
 
         object.prop === undefined
-        object.hasOwnProperty( prop )
+        object.hasOwnProperty(prop)
         "prop" in object
 
 
@@ -492,7 +512,7 @@ from an input element.
 If you were to test `typeof foo` now, the result would be `string`. This means
 that if you had logic that tested `foo` like:
 
-    if ( foo === 1 ) {
+    if (foo === 1) {
 
       importantTask();
 
@@ -512,7 +532,7 @@ You can preempt issues by using smart coercion with unary + or - operators:
     // typeof foo;
     // "number"
 
-    if ( foo === 1 ) {
+    if (foo === 1) {
 
         importantTask();
 
@@ -606,7 +626,7 @@ Here are some common cases along with coercions:
 Note that the above should be considered "unnecessarily clever". Prefer the
 obvious approach of comparing the returned value of `indexOf`, like:
 
-    if ( array.indexOf( "a" ) >= 0 ) {
+    if (array.indexOf( "a" ) >= 0) {
         // ...
     }
 
@@ -615,7 +635,7 @@ obvious approach of comparing the returned value of `indexOf`, like:
 
     var num = 2.5;
 
-    parseInt( num, 10 );
+    parseInt(num, 10);
 
     // is the same as...
 
@@ -632,7 +652,7 @@ Keep in mind however, that negative numbers will be treated differently...
 
     var neg = -2.5;
 
-    parseInt( neg, 10 );
+    parseInt(neg, 10);
 
     // is the same as...
 
@@ -658,78 +678,78 @@ However…
 
 When only evaluating that an array has length, instead of this:
 
-    if ( array.length > 0 ) ...
+    if (array.length > 0) ...
 
 
 …evaluate truthiness, like this:
 
-    if ( array.length ) ...
+    if (array.length) ...
 
 
 ##### 4.1.2
 
 When only evaluating that an array is empty, instead of this:
 
-    if ( array.length === 0 ) ...
+    if (array.length === 0) ...
 
 
 …evaluate truthiness, like this:
 
-    if ( !array.length ) ...
+    if (!array.length) ...
 
 
 ##### 4.1.3
 
 When only evaluating that a string is not empty, instead of this:
 
-    if ( string !== "" ) ...
+    if (string !== "") ...
 
 …evaluate truthiness, like this:
 
-    if ( string ) ...
+    if (string) ...
 
 
 ##### 4.1.4
 
 When only evaluating that a string _is_ empty, instead of this:
 
-    if ( string === "" ) ...
+    if (string === "") ...
 
 
 …evaluate falsy-ness, like this:
 
-    if ( !string ) ...
+    if (!string) ...
 
 
 ##### 4.1.5
 
 When only evaluating that a reference is true, instead of this:
 
-    if ( foo === true ) ...
+    if (foo === true) ...
 
 
 …evaluate like you mean it, take advantage of built in capabilities:
 
-    if ( foo ) ...
+    if (foo) ...
 
 
 ##### 4.1.6
 
 When evaluating that a reference is false, instead of this:
 
-    if ( foo === false ) ...
+    if (foo === false) ...
 
 
 …use negation to coerce a true evaluation
 
-    if ( !foo ) ...
+    if (!foo) ...
 
 
 …Be careful, this will also match: `0, "", null, undefined, NaN`
 
 If you _MUST_ test for a boolean false, then use
 
-    if ( foo === false ) ...
+    if (foo === false) ...
 
 
 ##### 4.1.7
@@ -737,12 +757,12 @@ If you _MUST_ test for a boolean false, then use
 When only evaluating a ref that might be `null` or `undefined`, but NOT `false`,
 `""` or `0`, instead of this:
 
-    if ( foo === null || foo === undefined ) ...
+    if (foo === null || foo === undefined) ...
 
 
 …take advantage of == type coercion, like this:
 
-    if ( foo == null ) ...
+    if (foo == null) ...
 
 
 Remember, using == will match a `null` to BOTH `null` and `undefined` but not
@@ -788,8 +808,8 @@ Prefer `===` over `==` (unless the case requires loose type evaluation)
 
 ##### 5.1.1 A Practical Module
 
-    (function( global ) {
-        var Module = (function() {
+    (function (global) {
+        var Module = (function () {
 
             var data = "secret";
 
@@ -804,13 +824,13 @@ Prefer `===` over `==` (unless the case requires loose type evaluation)
                 object: {
                     lang: "en-Us"
                 },
-                getData: function() {
+                getData: function () {
                     // get the current value of `data`
                     return data;
                 },
-                setData: function( value ) {
+                setData: function (value) {
                     // set the value of `data` and return it
-                    return ( data = value );
+                    return (data = value);
                 }
             };
         })();
@@ -820,37 +840,37 @@ Prefer `===` over `==` (unless the case requires loose type evaluation)
         // expose our module to the global object
         global.Module = Module;
 
-    })( this );
+    })(this);
 
 
 ##### 5.2.1 A Practical Constructor
 
-    (function( global ) {
+    (function (global) {
 
-        function Ctor( foo ) {
+        function Ctor (foo) {
 
             this.foo = foo;
 
             return this;
         }
 
-        Ctor.prototype.getFoo = function() {
+        Ctor.prototype.getFoo = function () {
             return this.foo;
         };
 
-        Ctor.prototype.setFoo = function( val ) {
-            return ( this.foo = val );
+        Ctor.prototype.setFoo = function (val) {
+            return (this.foo = val);
         };
 
       // To call constructor's without `new`, you might do this:
-        var ctor = function( foo ) {
-            return new Ctor( foo );
+        var ctor = function (foo) {
+            return new Ctor(foo);
         };
 
         // expose our constructor to the global object
         global.ctor = ctor;
 
-    })( this );
+    })(this);
 
 
 
@@ -866,7 +886,7 @@ The following code is an example of egregious naming:
 
 Example of code with poor names
 
-    function q(s) {
+    function q (s) {
         return document.querySelectorAll(s);
     }
     var i,a=[],els=q("#foo");
@@ -883,8 +903,8 @@ a readable structure):
 
 Example of code with improved names
 
-    function query( selector ) {
-        return document.querySelectorAll( selector );
+    function query (selector) {
+        return document.querySelectorAll(selector);
     }
 
     var idx = 0,
@@ -892,8 +912,8 @@ Example of code with improved names
         matches = query("#foo"),
         length = matches.length;
 
-    for ( ; idx < length; idx++ ) {
-        elements.push( matches[ idx ] );
+    for (; idx < length; idx++) {
+        elements.push(matches[ idx ]);
     }
 
 
@@ -951,20 +971,20 @@ From the Google Closure Library Style Guide
 #### 6.B. Faces of `this`
 
 Beyond the generally well known use cases of `call` and `apply`, always prefer
-`.bind( this )` or a functional equivalent, for creating `BoundFunction`
+`.bind(this)` or a functional equivalent, for creating `BoundFunction`
 definitions for later invocation. Only resort to aliasing when no preferable
 option is available.
 
 
 ##### 6.B.1
 
-    function Device( opts ) {
+    function Device (opts) {
 
         this.value = null;
 
         // open an async stream,
         // this will be called continuously
-        stream.read( opts.path, function( data ) {
+        stream.read(opts.path, function (data) {
 
             // Update this instance's current value
             // with the most recent value from the
@@ -975,7 +995,7 @@ option is available.
 
         // Throttle the frequency of events emitted from
         // this Device instance
-        setInterval(function() {
+        setInterval(function () {
 
             // Emit a throttled event
             this.emit("event");
@@ -993,17 +1013,17 @@ JavaScript libraries.
 ##### 6.B.2
 
     // eg. lodash/underscore, _.bind()
-    function Device( opts ) {
+    function Device (opts) {
 
         this.value = null;
 
-        stream.read( opts.path, _.bind(function( data ) {
+        stream.read(opts.path, _.bind(function (data) {
 
             this.value = data;
 
         }, this) );
 
-        setInterval(_.bind(function() {
+        setInterval(_.bind(function () {
 
             this.emit("event");
 
@@ -1012,17 +1032,17 @@ JavaScript libraries.
 
 
     // eg. jQuery.proxy
-    function Device( opts ) {
+    function Device (opts) {
 
         this.value = null;
 
-        stream.read( opts.path, jQuery.proxy(function( data ) {
+        stream.read(opts.path, jQuery.proxy(function (data) {
 
             this.value = data;
 
         }, this) );
 
-        setInterval( jQuery.proxy(function() {
+        setInterval(jQuery.proxy(function () {
 
             this.emit("event");
 
@@ -1031,17 +1051,17 @@ JavaScript libraries.
 
 
     // eg. dojo.hitch
-    function Device( opts ) {
+    function Device (opts) {
 
         this.value = null;
 
-        stream.read( opts.path, dojo.hitch( this, function( data ) {
+        stream.read(opts.path, dojo.hitch this, function (data) {
 
             this.value = data;
 
         }) );
 
-        setInterval( dojo.hitch( this, function() {
+        setInterval(dojo.hitch(this, function () {
 
             this.emit("event");
 
@@ -1055,18 +1075,18 @@ is extremely bug prone and should be avoided whenever possible.
 
 ##### 6.B.3
 
-    function Device( opts ) {
+    function Device (opts) {
         var self = this;
 
         this.value = null;
 
-        stream.read( opts.path, function( data ) {
+        stream.read(opts.path, function (data) {
 
             self.value = data;
 
         });
 
-        setInterval(function() {
+        setInterval(function () {
 
             self.emit("event");
 
@@ -1087,11 +1107,11 @@ signature, which should be used whenever possible
 
     obj = { f: "foo", b: "bar", q: "qux" };
 
-    Object.keys( obj ).forEach(function( key ) {
+    Object.keys(obj).forEach(function (key) {
 
         // |this| now refers to `obj`
 
-        console.log( this[ key ] );
+        console.log(this[ key ]);
 
     }, obj ); // <-- the last arg is `thisArg`
 
@@ -1132,7 +1152,7 @@ Notable improvements can be witnessed here as well:
 
 An example switch statement
 
-    switch( foo ) {
+    switch (foo) {
         case "alpha":
             alpha();
             break;
@@ -1154,28 +1174,28 @@ object to store "cases" and a function to delegate:
 
     // Example returns for illustration only.
     cases = {
-        alpha: function() {
+        alpha: function () {
             // statements
             // a return
             return [ "Alpha", arguments.length ];
         },
-        beta: function() {
+        beta: function () {
             // statements
             // a return
             return [ "Beta", arguments.length ];
         },
-        _default: function() {
+        _default: function () {
             // statements
             // a return
             return [ "Default", arguments.length ];
         }
     };
 
-    delegator = function() {
+    delegator = function () {
         var args, key, delegate;
 
         // Transform arguments list into an array
-        args = [].slice.call( arguments );
+        args = [].slice.call(arguments);
 
         // shift the case key from the arguments
         key = args.shift();
@@ -1184,13 +1204,13 @@ object to store "cases" and a function to delegate:
         delegate = cases._default;
 
         // Derive the method to delegate operation to
-        if ( cases.hasOwnProperty( key ) ) {
+        if (cases.hasOwnProperty( key )) {
             delegate = cases[ key ];
         }
 
         // The scope arg could be set to something specific,
         // in this case, |null| will suffice
-        return delegate.apply( null, args );
+        return delegate.apply(null, args);
     };
 
 
@@ -1198,7 +1218,7 @@ object to store "cases" and a function to delegate:
 
 Put the API in 7.A.1.2 to work:
 
-    delegator( "alpha", 1, 2, 3, 4, 5 );
+    delegator("alpha", 1, 2, 3, 4, 5);
     // [ "Alpha", 5 ]
 
     // Of course, the `case` key argument could easily be based
@@ -1209,7 +1229,7 @@ Put the API in 7.A.1.2 to work:
     // Possibly some kind of form input?
     someUserInput = 9;
 
-    if ( someUserInput > 10 ) {
+    if (someUserInput > 10) {
         caseKey = "alpha";
     } else {
         caseKey = "beta";
@@ -1221,7 +1241,7 @@ Put the API in 7.A.1.2 to work:
 
     // And then...
 
-    delegator( caseKey, someUserInput );
+    delegator(caseKey, someUserInput);
     // [ "Beta", 1 ]
 
     // And of course...
@@ -1237,10 +1257,10 @@ Put the API in 7.A.1.2 to work:
 ###### 7.B.1.1
 
     // Bad:
-    function returnLate( foo ) {
+    function returnLate (foo) {
         var ret;
 
-        if ( foo ) {
+        if (foo) {
             ret = "foo";
         } else {
             ret = "quux";
@@ -1250,8 +1270,8 @@ Put the API in 7.A.1.2 to work:
 
     // Good:
 
-    function returnEarly( foo ) {
-        if ( foo ) {
+    function returnEarly (foo) {
+        if (foo) {
             return "foo";
         }
         return "quux";
