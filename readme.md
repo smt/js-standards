@@ -853,7 +853,7 @@ Prefer `===` over `==` (unless the case requires loose type evaluation)
 The following code is an example of egregious naming:
 
 
-###### 6.A.1.1
+##### 6.A.1
 
 Example of code with poor names
 
@@ -870,7 +870,7 @@ Here's the same piece of logic, but with kinder, more thoughtful naming (and
 a readable structure):
 
 
-###### 6.A.2.1
+##### 6.A.2
 
 Example of code with improved names
 
@@ -888,47 +888,34 @@ Example of code with improved names
     }
 
 
-A few additional naming pointers:
+##### 6.A.3 A few additional naming pointers:
 
-
-###### 6.A.3.1
-
-Naming strings
+###### 6.A.3.1 Naming strings
 
     `dog` is a string
 
 
-###### 6.A.3.2
-
-Naming arrays
+###### 6.A.3.2 Naming arrays
 
     `dogs` is an array of `dog` strings
 
 
-###### 6.A.3.3
-
-Naming functions, objects, instances, etc
+###### 6.A.3.3 Naming functions, objects, instances, etc
 
     camelCase; function and var declarations
 
 
-###### 6.A.3.4
-
-Naming constructors, prototypes, etc.
+###### 6.A.3.4 Naming constructors, prototypes, etc.
 
     PascalCase; constructor function
 
 
-###### 6.A.3.5
-
-Naming regular expressions
+###### 6.A.3.5 Naming regular expressions
 
     rDesc = //;
 
 
-###### 6.A.3.6
-
-From the Google Closure Library Style Guide
+###### 6.A.3.6 From the Google Closure Library Style Guide
 
     functionNamesLikeThis;
     variableNamesLikeThis;
