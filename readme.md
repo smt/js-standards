@@ -171,15 +171,15 @@ encourages readability.
 ###### 2.A.1.2 Use whitespace to promote readability
 
     if ( condition ) {
-      // statements
+        // statements
     }
 
     while ( condition ) {
-      // statements
+        // statements
     }
 
     for ( var i = 0; i < 100; i++ ) {
-      // statements
+        // statements
     }
 
     // Even better:
@@ -188,7 +188,7 @@ encourages readability.
     var length = 100;
 
     for ( i = 0; i < length; i++ ) {
-      // statements
+        // statements
     }
 
 Or...
@@ -197,19 +197,19 @@ Or...
     var length = 100;
 
     for ( ; i < length; i++ ) {
-      // statements
+        // statements
     }
 
     var prop;
 
     for ( prop in object ) {
-      // statements
+        // statements
     }
 
     if ( true ) {
-      // statements
+        // statements
     } else {
-      // statements
+        // statements
     }
 
 
@@ -226,12 +226,14 @@ Or...
     var object = {};
 
 
-###### 2.B.1.2 Use separate `var` statements for a clean and maintainable declaration list.
+###### 2.B.1.2 Use separate `var` statements
+
+Do this for a clean and more maintainable declaration list.
 
     // Bad
     var foo = "",
-      bar = "",
-      quux;
+        bar = "",
+        quux;
 
     // Good
     var foo = "";
@@ -247,23 +249,25 @@ by a `var` keyword.
     var qux = 1;
 
 
+For more details on this, see <http://benalman.com/news/2012/05/multiple-var-statements-javascript/>.
+
+
 ###### 2.B.1.3 `var` statements should always be in the beginning of their respective scope (function). Same goes for const and let from ECMAScript 6.
 
     // Bad
     function foo() {
+        // some statements here
 
-      // some statements here
-
-      var bar = "";
-      var qux;
+        var bar = "";
+        var qux;
     }
 
     // Good
     function foo() {
-      var bar = "";
-      var qux;
+        var bar = "";
+        var qux;
 
-      // all statements after the variables declarations.
+        // all statements after the variables declarations.
     }
 
 
@@ -280,7 +284,7 @@ by a `var` keyword.
 ###### 2.B.2.2 Named Function Declaration
 
     function square( number ) {
-      return number * number;
+        return number * number;
     }
 
     // Usage
@@ -288,38 +292,37 @@ by a `var` keyword.
 
     // Really contrived continuation passing style
     function square( number, callback ) {
-      callback( number * number );
+        callback( number * number );
     }
 
     square( 10, function( square ) {
-      // callback statements
+        // callback statements
     });
 
 
 ###### 2.B.2.3 Function Expression
 
     var square = function( number ) {
-      // Return something valuable and relevant
-      return number * number;
+        // Return something valuable and relevant
+        return number * number;
     };
 
     // Function Expression with Identifier
     // This preferred form has the added value of being
     // able to call itself and have an identity in stack traces:
     var factorial = function factorial( number ) {
-      if ( number < 2 ) {
-        return 1;
-      }
+        if ( number < 2 ) {
+            return 1;
+        }
 
-      return number * factorial( number-1 );
+        return number * factorial( number-1 );
     };
 
 
 ###### 2.B.2.4 Constructor Declaration
 
     function FooBar( options ) {
-
-      this.options = options;
+        this.options = options;
     }
 
     // Usage
@@ -334,8 +337,8 @@ by a `var` keyword.
 ###### 2.C.1.1 Functions with callbacks
 
     foo(function() {
-      // Note there is no extra space between the first paren
-      // of the executing function call and the word "function"
+        // Note there is no extra space between the first paren
+        // of the executing function call and the word "function"
     });
 
     // Function accepting an array, no space
@@ -345,8 +348,8 @@ by a `var` keyword.
 ###### 2.C.1.2 Function accepting an object, no space
 
     foo({
-      a: "alpha",
-      b: "beta"
+        a: "alpha",
+        b: "beta"
     });
 
     // Single argument string literal, no space
@@ -371,21 +374,21 @@ source of your project.
 ###### 2.D.1.1
 
     if (condition) {
-      // statements
+        // statements
     }
 
     while (condition) {
-      // statements
+        // statements
     }
 
     for (var i = 0; i < 100; i++) {
-      // statements
+        // statements
     }
 
     if (true) {
-      // statements
+        // statements
     } else {
-      // statements
+        // statements
     }
 
 
@@ -511,7 +514,7 @@ You can preempt issues by using smart coercion with unary + or - operators:
 
     if ( foo === 1 ) {
 
-      importantTask();
+        importantTask();
 
     }
 
@@ -523,9 +526,9 @@ Here are some common cases along with coercions:
 
 ###### 3.B.2.1
 
-    var number = 1,
-      string = "1",
-      bool = false;
+    var number = 1;
+    var string = "1";
+    var bool = false;
 
     number;
     // 1
@@ -557,9 +560,9 @@ Here are some common cases along with coercions:
 
 ###### 3.B.2.2
 
-    var number = 1,
-      string = "1",
-      bool = true;
+    var number = 1;
+    var string = "1";
+    var bool = true;
 
     string === number;
     // false
@@ -604,7 +607,7 @@ Note that the above should be considered "unnecessarily clever". Prefer the
 obvious approach of comparing the returned value of `indexOf`, like:
 
     if ( array.indexOf( "a" ) >= 0 ) {
-      // ...
+        // ...
     }
 
 
@@ -786,36 +789,36 @@ Prefer `===` over `==` (unless the case requires loose type evaluation)
 ##### 5.1.1 A Practical Module
 
     (function( global ) {
-      var Module = (function() {
+        var Module = (function() {
 
-        var data = "secret";
+            var data = "secret";
 
-        return {
-          // This is some boolean property
-          bool: true,
-          // Some string value
-          string: "a string",
-          // An array property
-          array: [ 1, 2, 3, 4 ],
-          // An object property
-          object: {
-            lang: "en-Us"
-          },
-          getData: function() {
-            // get the current value of `data`
-            return data;
-          },
-          setData: function( value ) {
-            // set the value of `data` and return it
-            return ( data = value );
-          }
-        };
-      })();
+            return {
+                // This is some boolean property
+                bool: true,
+                // Some string value
+                string: "a string",
+                // An array property
+                array: [ 1, 2, 3, 4 ],
+                // An object property
+                object: {
+                    lang: "en-Us"
+                },
+                getData: function() {
+                    // get the current value of `data`
+                    return data;
+                },
+                setData: function( value ) {
+                    // set the value of `data` and return it
+                    return ( data = value );
+                }
+            };
+        })();
 
-      // Other things might happen here
+        // Other things might happen here
 
-      // expose our module to the global object
-      global.Module = Module;
+        // expose our module to the global object
+        global.Module = Module;
 
     })( this );
 
@@ -824,28 +827,28 @@ Prefer `===` over `==` (unless the case requires loose type evaluation)
 
     (function( global ) {
 
-      function Ctor( foo ) {
+        function Ctor( foo ) {
 
-        this.foo = foo;
+            this.foo = foo;
 
-        return this;
-      }
+            return this;
+        }
 
-      Ctor.prototype.getFoo = function() {
-        return this.foo;
-      };
+        Ctor.prototype.getFoo = function() {
+            return this.foo;
+        };
 
-      Ctor.prototype.setFoo = function( val ) {
-        return ( this.foo = val );
-      };
+        Ctor.prototype.setFoo = function( val ) {
+            return ( this.foo = val );
+        };
 
       // To call constructor's without `new`, you might do this:
-      var ctor = function( foo ) {
-        return new Ctor( foo );
-      };
+        var ctor = function( foo ) {
+            return new Ctor( foo );
+        };
 
-      // expose our constructor to the global object
-      global.ctor = ctor;
+        // expose our constructor to the global object
+        global.ctor = ctor;
 
     })( this );
 
@@ -864,7 +867,7 @@ The following code is an example of egregious naming:
 Example of code with poor names
 
     function q(s) {
-      return document.querySelectorAll(s);
+        return document.querySelectorAll(s);
     }
     var i,a=[],els=q("#foo");
     for(i=0;i<els.length;i++){a.push(els[i]);}
@@ -881,16 +884,16 @@ a readable structure):
 Example of code with improved names
 
     function query( selector ) {
-      return document.querySelectorAll( selector );
+        return document.querySelectorAll( selector );
     }
 
     var idx = 0,
-      elements = [],
-      matches = query("#foo"),
-      length = matches.length;
+        elements = [],
+        matches = query("#foo"),
+        length = matches.length;
 
     for ( ; idx < length; idx++ ) {
-      elements.push( matches[ idx ] );
+        elements.push( matches[ idx ] );
     }
 
 
@@ -957,27 +960,27 @@ option is available.
 
     function Device( opts ) {
 
-      this.value = null;
+        this.value = null;
 
-      // open an async stream,
-      // this will be called continuously
-      stream.read( opts.path, function( data ) {
+        // open an async stream,
+        // this will be called continuously
+        stream.read( opts.path, function( data ) {
 
-        // Update this instance's current value
-        // with the most recent value from the
-        // data stream
-        this.value = data;
+            // Update this instance's current value
+            // with the most recent value from the
+            // data stream
+            this.value = data;
 
-      }.bind(this) );
+        }.bind(this) );
 
-      // Throttle the frequency of events emitted from
-      // this Device instance
-      setInterval(function() {
+        // Throttle the frequency of events emitted from
+        // this Device instance
+        setInterval(function() {
 
-        // Emit a throttled event
-        this.emit("event");
+            // Emit a throttled event
+            this.emit("event");
 
-      }.bind(this), opts.freq || 100 );
+        }.bind(this), opts.freq || 100 );
     }
 
     // Just pretend we've inherited EventEmitter ;)
@@ -992,57 +995,57 @@ JavaScript libraries.
     // eg. lodash/underscore, _.bind()
     function Device( opts ) {
 
-      this.value = null;
+        this.value = null;
 
-      stream.read( opts.path, _.bind(function( data ) {
+        stream.read( opts.path, _.bind(function( data ) {
 
-        this.value = data;
+            this.value = data;
 
-      }, this) );
+        }, this) );
 
-      setInterval(_.bind(function() {
+        setInterval(_.bind(function() {
 
-        this.emit("event");
+            this.emit("event");
 
-      }, this), opts.freq || 100 );
+        }, this), opts.freq || 100 );
     }
 
 
     // eg. jQuery.proxy
     function Device( opts ) {
 
-      this.value = null;
+        this.value = null;
 
-      stream.read( opts.path, jQuery.proxy(function( data ) {
+        stream.read( opts.path, jQuery.proxy(function( data ) {
 
-        this.value = data;
+            this.value = data;
 
-      }, this) );
+        }, this) );
 
-      setInterval( jQuery.proxy(function() {
+        setInterval( jQuery.proxy(function() {
 
-        this.emit("event");
+            this.emit("event");
 
-      }, this), opts.freq || 100 );
+        }, this), opts.freq || 100 );
     }
 
 
     // eg. dojo.hitch
     function Device( opts ) {
 
-      this.value = null;
+        this.value = null;
 
-      stream.read( opts.path, dojo.hitch( this, function( data ) {
+        stream.read( opts.path, dojo.hitch( this, function( data ) {
 
-        this.value = data;
+            this.value = data;
 
-      }) );
+        }) );
 
-      setInterval( dojo.hitch( this, function() {
+        setInterval( dojo.hitch( this, function() {
 
-        this.emit("event");
+            this.emit("event");
 
-      }), opts.freq || 100 );
+        }), opts.freq || 100 );
     }
 
 
@@ -1053,21 +1056,21 @@ is extremely bug prone and should be avoided whenever possible.
 ##### 6.B.3
 
     function Device( opts ) {
-      var self = this;
+        var self = this;
 
-      this.value = null;
+        this.value = null;
 
-      stream.read( opts.path, function( data ) {
+        stream.read( opts.path, function( data ) {
 
-        self.value = data;
+            self.value = data;
 
-      });
+        });
 
-      setInterval(function() {
+        setInterval(function() {
 
-        self.emit("event");
+            self.emit("event");
 
-      }, opts.freq || 100 );
+        }, opts.freq || 100 );
     }
 
 
@@ -1086,9 +1089,9 @@ signature, which should be used whenever possible
 
     Object.keys( obj ).forEach(function( key ) {
 
-      // |this| now refers to `obj`
+        // |this| now refers to `obj`
 
-      console.log( this[ key ] );
+        console.log( this[ key ] );
 
     }, obj ); // <-- the last arg is `thisArg`
 
@@ -1113,14 +1116,16 @@ attempt to find better ways to do common JavaScript programming tasks.
 
 
 
-#### 7.A. Using `switch` should be avoided, modern method tracing will blacklist functions with switch statements
+#### 7.A. Using `switch` should be avoided
 
-There seems to be drastic improvements to the execution of `switch` statements
-in latest releases of Firefox and Chrome.
-http://jsperf.com/switch-vs-object-literal-vs-module
+Modern method tracing will blacklist functions with switch statements.
 
-Notable improvements can be witnesses here as well:
-https://github.com/rwldrn/idiomatic.js/issues/13
+However, there seem to be drastic improvements to the execution of `switch`
+statements in latest releases of Firefox and Chrome.
+<http://jsperf.com/switch-vs-object-literal-vs-module>
+
+Notable improvements can be witnessed here as well:
+<https://github.com/rwldrn/idiomatic.js/issues/13>
 
 
 ###### 7.A.1.1
@@ -1128,15 +1133,15 @@ https://github.com/rwldrn/idiomatic.js/issues/13
 An example switch statement
 
     switch( foo ) {
-      case "alpha":
-        alpha();
-        break;
-      case "beta":
-        beta();
-        break;
-      default:
-        // something to default to
-        break;
+        case "alpha":
+            alpha();
+            break;
+        case "beta":
+            beta();
+            break;
+        default:
+            // something to default to
+            break;
     }
 
 
@@ -1149,43 +1154,43 @@ object to store "cases" and a function to delegate:
 
     // Example returns for illustration only.
     cases = {
-      alpha: function() {
-        // statements
-        // a return
-        return [ "Alpha", arguments.length ];
-      },
-      beta: function() {
-        // statements
-        // a return
-        return [ "Beta", arguments.length ];
-      },
-      _default: function() {
-        // statements
-        // a return
-        return [ "Default", arguments.length ];
-      }
+        alpha: function() {
+            // statements
+            // a return
+            return [ "Alpha", arguments.length ];
+        },
+        beta: function() {
+            // statements
+            // a return
+            return [ "Beta", arguments.length ];
+        },
+        _default: function() {
+            // statements
+            // a return
+            return [ "Default", arguments.length ];
+        }
     };
 
     delegator = function() {
-      var args, key, delegate;
+        var args, key, delegate;
 
-      // Transform arguments list into an array
-      args = [].slice.call( arguments );
+        // Transform arguments list into an array
+        args = [].slice.call( arguments );
 
-      // shift the case key from the arguments
-      key = args.shift();
+        // shift the case key from the arguments
+        key = args.shift();
 
-      // Assign the default case handler
-      delegate = cases._default;
+        // Assign the default case handler
+        delegate = cases._default;
 
-      // Derive the method to delegate operation to
-      if ( cases.hasOwnProperty( key ) ) {
-        delegate = cases[ key ];
-      }
+        // Derive the method to delegate operation to
+        if ( cases.hasOwnProperty( key ) ) {
+            delegate = cases[ key ];
+        }
 
-      // The scope arg could be set to something specific,
-      // in this case, |null| will suffice
-      return delegate.apply( null, args );
+        // The scope arg could be set to something specific,
+        // in this case, |null| will suffice
+        return delegate.apply( null, args );
     };
 
 
@@ -1205,9 +1210,9 @@ Put the API in 7.A.1.2 to work:
     someUserInput = 9;
 
     if ( someUserInput > 10 ) {
-      caseKey = "alpha";
+        caseKey = "alpha";
     } else {
-      caseKey = "beta";
+        caseKey = "beta";
     }
 
     // or...
@@ -1233,24 +1238,23 @@ Put the API in 7.A.1.2 to work:
 
     // Bad:
     function returnLate( foo ) {
-      var ret;
+        var ret;
 
-      if ( foo ) {
-        ret = "foo";
-      } else {
-        ret = "quux";
-      }
-      return ret;
+        if ( foo ) {
+            ret = "foo";
+        } else {
+            ret = "quux";
+        }
+        return ret;
     }
 
     // Good:
 
     function returnEarly( foo ) {
-
-      if ( foo ) {
-        return "foo";
-      }
-      return "quux";
+        if ( foo ) {
+            return "foo";
+        }
+        return "quux";
     }
 
 
@@ -1260,7 +1264,7 @@ Put the API in 7.A.1.2 to work:
 
 The basic principle here is:
 
-**Don't do stupid shit and everything will be ok.**
+**Don't be a idiot** and everything will be ok.
 
 To reinforce this concept, please watch the following presentation:
 
@@ -1269,7 +1273,7 @@ Portland, Oregon)
 
 <iframe src="http://blip.tv/play/g_Mngr6LegI.html" width="480" height="346" frameborder="0" allowfullscreen></iframe><embed type="application/x-shockwave-flash" src="http://a.blip.tv/api.swf#g_Mngr6LegI" style="display:none"></embed>
 
-http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542
+<http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending-built-ins-5211542>
 
 
 
@@ -1286,7 +1290,8 @@ http://blip.tv/jsconf/jsconf2011-andrew-dupont-everything-is-permitted-extending
 
 ### 10. <a name="language">One Language Code</a>
 
-    Programs should be written in one language, whatever that language may be, as dictated by the maintainer or maintainers.
+Programs should be written in one language, whatever that language may be, as
+dictated by the maintainer or maintainers.
 
 
 
