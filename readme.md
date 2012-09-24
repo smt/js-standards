@@ -878,10 +878,10 @@ Example of code with improved names
         return document.querySelectorAll(selector);
     }
 
-    var idx = 0,
-        elements = [],
-        matches = query("#foo"),
-        length = matches.length;
+    var idx = 0;
+    var elements = [];
+    var matches = query("#foo");
+    var length = matches.length;
 
     for (; idx < length; idx++) {
         elements.push(matches[ idx ]);
